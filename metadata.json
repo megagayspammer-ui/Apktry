@@ -1,0 +1,6 @@
+{
+  "name": "PermScript Studio",
+  "description": "Permission sandbox & zero-compile code studio for crafting and running live Android apps with full hardware permission APIs",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
