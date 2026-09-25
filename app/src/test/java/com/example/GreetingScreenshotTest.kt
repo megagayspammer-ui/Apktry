@@ -2,7 +2,9 @@ package com.example
 
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onRoot
-import com.example.ui.permissions.PermissionsScreen
+import com.example.model.DeviceType
+import com.example.model.NearbyDevice
+import com.example.ui.components.DeviceListView
 import com.example.ui.theme.MyApplicationTheme
 import com.github.takahirom.roborazzi.RobolectricDeviceQualifiers
 import com.github.takahirom.roborazzi.captureRoboImage
@@ -22,13 +24,31 @@ class GreetingScreenshotTest {
 
   @Test
   fun greeting_screenshot() {
+    val sampleDevices = listOf(
+      NearbyDevice(
+        id = "C4:29:96:A1:B2:10",
+        rawName = "MacBook Pro",
+        customAlias = "Ben's Workstation",
+        deviceType = DeviceType.BLUETOOTH_LE,
+        rssi = -55,
+        bearingDegrees = 30f
+      ),
+      NearbyDevice(
+        id = "A0:32:89:FE:44:22",
+        rawName = "Home_Mesh_5G",
+        customAlias = "Living Room Router",
+        deviceType = DeviceType.WIFI_AP,
+        rssi = -62,
+        bearingDegrees = 180f
+      )
+    )
+
     composeTestRule.setContent {
       MyApplicationTheme {
-        PermissionsScreen(
-          permissionsGrantedMap = mapOf("camera" to true, "mic" to false),
-          onRequestSinglePermission = {},
-          onRequestAllPermissions = {},
-          onRefreshPermissions = {}
+        DeviceListView(
+          devices = sampleDevices,
+          onSelectDevice = {},
+          onOpenRename = {}
         )
       }
     }
@@ -36,4 +56,3 @@ class GreetingScreenshotTest {
     composeTestRule.onRoot().captureRoboImage(filePath = "src/test/screenshots/greeting.png")
   }
 }
-

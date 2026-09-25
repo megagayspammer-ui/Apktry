@@ -2,7 +2,8 @@ package com.example
 
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider
-import com.example.model.PermissionRegistry
+import com.example.model.DeviceType
+import com.example.model.NearbyDevice
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -18,15 +19,27 @@ class ExampleRobolectricTest {
   fun `read string from context`() {
     val context = ApplicationProvider.getApplicationContext<Context>()
     val appName = context.getString(R.string.app_name)
-    assertEquals("PermScript Studio", appName)
+    assertEquals("NearMap Radar", appName)
   }
 
   @Test
-  fun `permission registry has all permissions`() {
-    assertTrue(PermissionRegistry.ALL_PERMISSIONS.isNotEmpty())
-    assertTrue(PermissionRegistry.ALL_PERMISSIONS.any { it.id == "camera" })
-    assertTrue(PermissionRegistry.ALL_PERMISSIONS.any { it.id == "mic" })
-    assertTrue(PermissionRegistry.ALL_PERMISSIONS.any { it.id == "fine_location" })
+  fun `nearby device custom nickname and distance math`() {
+    val device = NearbyDevice(
+      id = "AA:BB:CC:DD:EE:FF",
+      rawName = "Wireless Headset",
+      customAlias = "My Beats Studio",
+      deviceType = DeviceType.BLUETOOTH_LE,
+      rssi = -60,
+      bearingDegrees = 45f,
+      txPower = -59
+    )
+
+    // Check alias priority
+    assertEquals("My Beats Studio", device.displayName)
+    assertTrue(device.hasCustomName)
+
+    // Check distance is calculated within realistic range [0.3m, 60m]
+    assertTrue(device.estimatedDistanceMeters > 0.3)
+    assertTrue(device.estimatedDistanceMeters < 5.0)
   }
 }
-

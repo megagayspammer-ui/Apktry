@@ -22,6 +22,6 @@ dependencyResolutionManagement {
   }
 }
 
-rootProject.name = "PermScript Studio"
+rootProject.name = "NearMap Radar"
 
 include(":app")

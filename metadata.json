@@ -1,6 +1,6 @@
 {
-  "name": "PermScript Studio",
-  "description": "Permission sandbox & zero-compile code studio for crafting and running live Android apps with full hardware permission APIs",
+  "name": "NearMap Radar",
+  "description": "Real-time RF radar for nearby Bluetooth, BLE and Wi-Fi devices with customizable nicknames, signal proximity mapping, and orientation tracking.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

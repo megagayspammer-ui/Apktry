@@ -16,3 +16,12 @@ val StudioRose = Color(0xFFF43F5E)
 val DarkTextPrimary = Color(0xFFF9FAFB)
 val DarkTextSecondary = Color(0xFF9CA3AF)
 
+// Radar-specific accent colors
+val RadarNeonCyan = Color(0xFF00F5D4)
+val RadarSweepGreen = Color(0xFF38B000)
+val RadarGridLine = Color(0x4038BDF8)
+val RadarPingGlow = Color(0x6600F5D4)
+val WifiOrange = Color(0xFFFF9E00)
+val BeaconViolet = Color(0xFFB5179E)
+val NamedDeviceGreen = Color(0xFF06D6A0)
+
